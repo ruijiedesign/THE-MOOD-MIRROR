@@ -889,7 +889,15 @@ function startQuiz(){
     if(audio){audio.volume=0;audio.play().catch(()=>{});let v=0;const fi=setInterval(()=>{v=Math.min(v+0.008,0.28);audio.volume=v;if(v>=0.28)clearInterval(fi);},120);bgmPlaying=true;}
   }curQ=0;ans=new Array(QS.length).fill(null);prevCh=-1;renderQ();goScreen('sq');setTimeout(()=>showSplash(0,true),120);}
 function retake(){stopAll();startQuiz();}
-function toggleMute(){muted=!muted;document.getElementById('mute-btn').style.opacity=muted?'.35':'1';document.getElementById('mute-btn').textContent=muted?'♩':'♪';}
+function toggleMute(){
+  const audio = document.getElementById('bgm-audio');
+  const btn = document.getElementById('mute-btn');
+  if(!audio) return;
+  muted = !muted;
+  audio.muted = muted;
+  btn.textContent = muted ? '♩' : '♪';
+  btn.style.opacity = muted ? '.4' : '1';
+}
 
 function showSplash(chIdx,force=false){
   if(!force&&chIdx===prevCh)return;prevCh=chIdx;
