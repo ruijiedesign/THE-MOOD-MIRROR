@@ -339,19 +339,27 @@ html,body{min-height:100%;background:#06080e;font-family:var(--f-body);font-weig
     <div style="font-size:10px;text-transform:uppercase;letter-spacing:.14em;color:var(--lime);font-weight:600;margin-bottom:10px">Quadrant Position</div>
     <div class="quad-wrap">
       <svg viewBox="0 0 280 220" fill="none">
-        <line x1="140" y1="8" x2="140" y2="212" stroke="rgba(255,255,255,.13)" stroke-width="1"/>
-        <line x1="8" y1="110" x2="272" y2="110" stroke="rgba(255,255,255,.13)" stroke-width="1"/>
-        <text x="140" y="7" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="9" font-family="Space Grotesk">High Load</text>
-        <text x="140" y="220" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="9" font-family="Space Grotesk">Low Load</text>
+        <!-- Midlines: E=55 → x=153, L=35 → y=140 -->
+        <line x1="153" y1="10" x2="153" y2="210" stroke="rgba(255,255,255,.13)" stroke-width="1"/>
+        <line x1="10" y1="140" x2="270" y2="140" stroke="rgba(255,255,255,.13)" stroke-width="1"/>
+        <!-- Axis labels -->
+        <text x="140" y="7" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="9" font-family="Space Grotesk">High L</text>
+        <text x="140" y="220" text-anchor="middle" fill="rgba(255,255,255,.3)" font-size="9" font-family="Space Grotesk">Low L</text>
         <text x="6" y="113" text-anchor="start" fill="rgba(255,255,255,.3)" font-size="9" font-family="Space Grotesk">Low E</text>
         <text x="274" y="113" text-anchor="end" fill="rgba(255,255,255,.3)" font-size="9" font-family="Space Grotesk">High E</text>
-        <text id="qlbl-fr" x="55" y="52" text-anchor="middle" fill="rgba(255,255,255,.17)" font-size="8" font-family="Space Grotesk">Fragile Resonators</text>
-        <text id="qlbl-ao" x="220" y="52" text-anchor="middle" fill="rgba(255,255,255,.17)" font-size="8" font-family="Space Grotesk">The Anchor of Order</text>
-        <text id="qlbl-br" x="220" y="178" text-anchor="middle" fill="rgba(255,255,255,.17)" font-size="8" font-family="Space Grotesk">Burdened Radiance</text>
-        <text id="qlbl-do" x="55" y="178" text-anchor="middle" fill="rgba(255,255,255,.17)" font-size="8" font-family="Space Grotesk">Detached Observers</text>
-        <circle id="qdot" cx="80" cy="165" r="9" fill="#C8FF00" opacity=".9"/>
-        <circle id="qdot2" cx="80" cy="165" r="16" fill="rgba(200,255,0,.2)"/>
-        <circle id="qdot3" cx="80" cy="165" r="26" fill="rgba(200,255,0,.07)"/>
+        <!-- Quadrant labels -->
+        <!-- Q1: High E High L → top-right  (x>153, y<140) -->
+        <text id="qlbl-br" x="215" y="52" text-anchor="middle" fill="rgba(255,255,255,.18)" font-size="8" font-family="Space Grotesk">Burdened Radiance</text>
+        <!-- Q2: Low E Low L  → bottom-left (x<153, y>140) -->
+        <text id="qlbl-do" x="78" y="192" text-anchor="middle" fill="rgba(255,255,255,.18)" font-size="8" font-family="Space Grotesk">Detached Observers</text>
+        <!-- Q3: Low E High L → top-left    (x<153, y<140) -->
+        <text id="qlbl-fr" x="78" y="52" text-anchor="middle" fill="rgba(255,255,255,.18)" font-size="8" font-family="Space Grotesk">Fragile Resonators</text>
+        <!-- Q4: High E Low L → bottom-right (x>153, y>140) -->
+        <text id="qlbl-ao" x="215" y="192" text-anchor="middle" fill="rgba(255,255,255,.18)" font-size="8" font-family="Space Grotesk">The Anchor of Order</text>
+        <!-- Dot -->
+        <circle id="qdot3" cx="140" cy="140" r="26" fill="rgba(200,255,0,.07)"/>
+        <circle id="qdot2" cx="140" cy="140" r="16" fill="rgba(200,255,0,.2)"/>
+        <circle id="qdot"  cx="140" cy="140" r="9"  fill="#C8FF00" opacity=".9"/>
       </svg>
     </div>
   </div>
@@ -757,22 +765,22 @@ const VIBE_IMGS = {
 
 /* ═══════════════ PERSONALITIES ═══════════════ */
 const PERSONALITIES=[
-  {name:"Polar Oasis",group:"The Anchor of Order",q:"4",subMin:56,subMax:65,subAxis:"E",tags:["Recovery","Contraction","Internal Stillness"],narrative:"Sometimes you enter a very quiet state.\nNot because nothing is happening, but because too much has already been handled.\n\nYou start wanting things simpler, softer, less demanding.\n\nAt times like this, it isn't emptiness. It is recovery.\n\nThere may be a small sense of space inside you — not sadness, just stillness.\n\nYou don't need to rush to fill it. Stillness also has its own place.",eIndex:"Medium-Low (Stable)",lIndex:"Low",flow:"Contraction / Recovery",mechanism:"You may have gone through too much input or emotional load recently. Your mind is naturally stepping back to recover.",meaning:"You feel slightly distant from noise, like everything has been turned down in volume. Not disconnected — just gently slowed.",actions:["Sit without doing anything for a while","Don't try to define how you feel","Let quiet exist without filling it"]},
-  {name:"Perpetual Cruiser",group:"The Anchor of Order",q:"4",subMin:66,subMax:75,subAxis:"E",tags:["Smooth Flow","Forward Motion","Low Pause"],narrative:"You feel like you are always moving forward, with very few pauses.\n\nYou handle things well, and emotions rarely slow you down.\n\nThis can be a form of protection — keeping life from becoming too heavy.\n\nBut sometimes, things pass before you've had time to feel them.",eIndex:"Medium-High (Sustained)",lIndex:"Low",flow:"Smooth / Continuous",mechanism:"You may be used to processing things early — before they become emotional weight.",meaning:"Life moves smoothly through you. You respond quickly, but things don't always stay long enough to be fully felt.",actions:["Walk without any input or distraction","Leave one small thing unresolved","Do something without an outcome"]},
-  {name:"Marble in the Dawn",group:"The Anchor of Order",q:"4",subMin:76,subMax:85,subAxis:"E",tags:["Rapid Compression","Composed","Self-Stabilizing"],narrative:"You often appear steady, clear, and controlled.\n\nEmotions do exist, but you organize them quickly and quietly.\n\nBut sometimes, it's not about being better — it's about allowing yourself to be slightly unfinished.",eIndex:"Medium-High (Stable)",lIndex:"Medium-Low",flow:"Rapid Compression",mechanism:"You may value stability and clarity deeply. So anything that disrupts that shape gets quickly contained.",meaning:"Feelings arise, but are quickly arranged and put away. What others see is calm; what you experience is fast internal sorting.",actions:["Say one unpolished sentence","Pause before responding once","Let something remain incomplete"]},
-  {name:"Stellar Gravitational Field",group:"The Anchor of Order",q:"4",subMin:86,subMax:999,subAxis:"E",tags:["Outward Structuring","High Stability","Centripetal"],narrative:"You are someone people naturally orient toward.\n\nOthers feel calmer around you. Things find direction when you're involved.\n\nYou don't always act loudly, but you hold structure together.\n\nAnd sometimes, in doing that, you forget you also need support.",eIndex:"High",lIndex:"Low",flow:"Outward structuring",mechanism:"You may have spent a long time in roles where you stabilize things for others. That role slowly becomes your default way of being.",meaning:"You become a quiet center others rely on. Stability gathers around you almost naturally.",actions:["Let someone else decide something","Accept help without explaining","Step out of responsibility briefly"]},
-  {name:"Luminous Crack",group:"Burdened Radiance",q:"1",subMin:36,subMax:42,subAxis:"L",tags:["Transformative Strain","Adaptive Resilience","Forward Pressure"],narrative:"You didn't stop after things became difficult — you continued forward.\n\nWhat happened didn't disappear; it became part of you.\n\nThis is why you may feel stronger than before.\nBut also why rest may feel unfamiliar.\n\nStrength doesn't always need pressure to prove itself.",eIndex:"High",lIndex:"High",flow:"Transformative Strain",mechanism:"You may turn experience into movement rather than pause with it.",meaning:"What you've been through still exists inside you, but it has been integrated rather than removed.",actions:["Do something without meaning","Avoid measuring progress today","Allow stillness without purpose"]},
-  {name:"Burning Glacier",group:"Burdened Radiance",q:"1",subMin:43,subMax:50,subAxis:"L",tags:["Accumulated Compression","Delayed Fatigue","High Load"],narrative:"You are holding a lot, and you are doing it well.\n\nPeople trust you because you can carry things without falling apart.\n\nBut being capable doesn't mean you are never tired.\nIt just means the tiredness arrives later.",eIndex:"High",lIndex:"High",flow:"Accumulated Compression",mechanism:"You may be carrying responsibility for a long time without pause or redistribution.",meaning:"You look stable, but something inside is slowly wearing down. Not suddenly — just continuously.",actions:["Delay one non-urgent task","Say no without explanation once","Leave one thing unattended for now"]},
-  {name:"Glass-Core Hammer",group:"Burdened Radiance",q:"1",subMin:51,subMax:60,subAxis:"L",tags:["Controlled Suppression","Internal Fragility","High Regulation"],narrative:"You are sensitive, but not easily seen as such.\n\nYou tend to act clearly, precisely, efficiently.\n\nBecause uncertainty doesn't feel comfortable for you.\n\nBut holding too tightly for too long can quietly exhaust you.",eIndex:"High",lIndex:"High",flow:"Controlled Suppression",mechanism:"You may respond to uncertainty by increasing control and structure.",meaning:"Externally composed, internally alert. Control helps you feel safe, but it also tightens everything inside.",actions:["Leave one small thing unadjusted","Let something happen without correction","Allow imperfection once"]},
-  {name:"Charged Cumulonimbus",group:"Burdened Radiance",q:"1",subMin:61,subMax:999,subAxis:"L",tags:["Pressure Build","Accumulation","Pre-Release"],narrative:"Something is building inside you.\n\nNot chaos — accumulation.\n\nThoughts, emotions, pressure gathering in the same place.\n\nYou are still functioning, still holding your shape.\nBut something feels fuller than usual.\n\nThis is not collapse. It is buildup.",eIndex:"High",lIndex:"High",flow:"Accumulation / Pressure Build",mechanism:"You may be carrying multiple emotional or mental threads without enough release space.",meaning:"Everything is still moving, but nothing is fully releasing.",actions:["Move your body without purpose","Write without organizing anything","Do something with no result"]},
-  {name:"A Poem Interpreted by the Breeze",group:"Detached Observers",q:"2",subMin:45,subMax:55,subAxis:"E",tags:["Flow-through","Open Perception","Low Retention"],narrative:"You feel light in a way that is hard to hold onto.\n\nYou sense many things, but they don't stay fixed in you.\n\nThey pass through, then leave.\n\nThis is a soft kind of awareness — but sometimes it can feel directionless.",eIndex:"Low",lIndex:"Low",flow:"Flow-through sensitivity",mechanism:"You may be open to input, but less inclined to hold onto it.",meaning:"Experience moves through you without settling.",actions:["Do one very concrete task","Build a small daily anchor","Keep one stable routine"]},
-  {name:"Signal Tower in the Fog",group:"Detached Observers",q:"2",subMin:35,subMax:44,subAxis:"E",tags:["External Attunement","High Sensitivity","Relational Alignment"],narrative:"You notice people very quickly.\n\nSmall shifts in tone or mood are easy for you to feel.\n\nSo you adjust yourself naturally to keep things smooth.\n\nBut sometimes you forget to ask: how am I feeling?",eIndex:"Medium",lIndex:"Medium",flow:"External attunement",mechanism:"You may be highly sensitive to relational environments, adjusting automatically.",meaning:"You are constantly tuned to others, less often tuned to yourself.",actions:["Pause before responding","Check your own feeling first","Make one decision only for yourself"]},
-  {name:"Translucent Amber",group:"Detached Observers",q:"2",subMin:26,subMax:34,subAxis:"E",tags:["Delayed Processing","Emotional Buffering","Gentle Hold"],narrative:"You don't ignore feelings — you hold them for later.\n\nYou wait until it feels safer to return to them.\n\nThis protects you from being overwhelmed.\n\nBut when things are held too long, they can become harder to name.",eIndex:"Medium-Low",lIndex:"Medium",flow:"Delayed processing",mechanism:"You may prefer emotional safety before emotional expression.",meaning:"Emotions are stored, not erased. They wait quietly beneath the surface.",actions:["Say one honest feeling out loud","Don't delay a response once","Let something be expressed immediately"]},
-  {name:"Abyssal Mothership",group:"Detached Observers",q:"2",subMin:0,subMax:25,subAxis:"E",tags:["Detachment","Observational","Protective Distance"],narrative:"You tend to observe before you enter.\n\nYou understand what is happening, but you don't always step fully into it.\n\nThis keeps you safe and clear.\n\nBut sometimes life asks for participation, not just observation.",eIndex:"Medium-Low",lIndex:"Low",flow:"Detachment / Observation",mechanism:"Distance may be your way of staying emotionally safe and stable.",meaning:"You are close to things, but slightly outside of them.",actions:["Say yes to something small you'd usually avoid","Don't analyze one interaction","Participate without stepping back"]},
-  {name:"Rain-Soaked Neon",group:"Fragile Resonators",q:"3",subMin:36,subMax:42,subAxis:"L",tags:["Amplified Perception","Unfiltered Input","Intensity"],narrative:"Everything feels slightly stronger for you.\n\nLight, sound, emotion — they all arrive directly.\n\nSometimes this feels beautiful, sometimes exhausting.\n\nYou are not too sensitive.\nThe world is just arriving without a filter.",eIndex:"Medium-Low",lIndex:"High",flow:"Amplified perception",mechanism:"You may have heightened perceptual sensitivity to emotional and sensory input.",meaning:"Experience comes in raw and unfiltered, intensifying everything.",actions:["Sit in quiet space","Reduce stimulation for a while","Let your system soften"]},
-  {name:"Dreamcatcher in the Evening Wind",group:"Fragile Resonators",q:"3",subMin:43,subMax:50,subAxis:"L",tags:["Absorptive Permeability","High Empathy","Boundary Diffusion"],narrative:"You absorb people easily.\n\nTheir emotions, tone, and presence stay with you longer than you expect.\n\nThis is sensitivity, not weakness.\n\nBut not everything you carry belongs to you.",eIndex:"Medium-Low",lIndex:"High",flow:"Absorptive permeability",mechanism:"You may have very open emotional boundaries, especially in connection.",meaning:"You take in emotional traces from others without always filtering them out.",actions:["Reduce social input at night","Spend time completely alone","Let your system clear itself"]},
-  {name:"Weightless Bird",group:"Fragile Resonators",q:"3",subMin:51,subMax:60,subAxis:"L",tags:["Floating Retention","Unanchored","Suspended"],narrative:"You look fine, but something inside hasn't fully settled.\n\nFeelings are present, but not placed anywhere.\n\nThey are still floating, waiting — for expression or connection.",eIndex:"Medium-Low",lIndex:"Medium-High",flow:"Floating retention",mechanism:"You may not yet have a safe place or person to fully release what you feel.",meaning:"Emotion exists, but has not landed yet.",actions:["Say one small honest thing","Let one reaction happen naturally","Share something simple and real"]},
-  {name:"Tides of the Moon's Far Side",group:"Fragile Resonators",q:"3",subMin:61,subMax:999,subAxis:"L",tags:["Formation","Undefined","Pre-Language"],narrative:"You may not fully know what you are feeling right now.\n\nBut something is changing, even if it doesn't have a name yet.\n\nThere is no need to rush clarity.\n\nNot everything inside you needs to be understood immediately.",eIndex:"Low-Medium",lIndex:"Medium",flow:"Formation / Undefined",mechanism:"You may be in transition — something internal is still organizing itself.",meaning:"A state forming, but not yet defined.",actions:["Don't define your mood today","Write fragments instead of conclusions","Do one simple action"]}
+  {name:"Polar Oasis",group:"The Anchor of Order",cx:59,cy:5,q:"4",subMin:56,subMax:65,subAxis:"E",tags:["Recovery","Contraction","Internal Stillness"],narrative:"Sometimes you enter a very quiet state.\nNot because nothing is happening, but because too much has already been handled.\n\nYou start wanting things simpler, softer, less demanding.\n\nAt times like this, it isn't emptiness. It is recovery.\n\nThere may be a small sense of space inside you — not sadness, just stillness.\n\nYou don't need to rush to fill it. Stillness also has its own place.",eIndex:"Medium-Low (Stable)",lIndex:"Low",flow:"Contraction / Recovery",mechanism:"You may have gone through too much input or emotional load recently. Your mind is naturally stepping back to recover.",meaning:"You feel slightly distant from noise, like everything has been turned down in volume. Not disconnected — just gently slowed.",actions:["Sit without doing anything for a while","Don't try to define how you feel","Let quiet exist without filling it"]},
+  {name:"Perpetual Cruiser",group:"The Anchor of Order",cx:66,cy:15,q:"4",subMin:66,subMax:75,subAxis:"E",tags:["Smooth Flow","Forward Motion","Low Pause"],narrative:"You feel like you are always moving forward, with very few pauses.\n\nYou handle things well, and emotions rarely slow you down.\n\nThis can be a form of protection — keeping life from becoming too heavy.\n\nBut sometimes, things pass before you've had time to feel them.",eIndex:"Medium-High (Sustained)",lIndex:"Low",flow:"Smooth / Continuous",mechanism:"You may be used to processing things early — before they become emotional weight.",meaning:"Life moves smoothly through you. You respond quickly, but things don't always stay long enough to be fully felt.",actions:["Walk without any input or distraction","Leave one small thing unresolved","Do something without an outcome"]},
+  {name:"Marble in the Dawn",group:"The Anchor of Order",cx:75,cy:25,q:"4",subMin:76,subMax:85,subAxis:"E",tags:["Rapid Compression","Composed","Self-Stabilizing"],narrative:"You often appear steady, clear, and controlled.\n\nEmotions do exist, but you organize them quickly and quietly.\n\nBut sometimes, it's not about being better — it's about allowing yourself to be slightly unfinished.",eIndex:"Medium-High (Stable)",lIndex:"Medium-Low",flow:"Rapid Compression",mechanism:"You may value stability and clarity deeply. So anything that disrupts that shape gets quickly contained.",meaning:"Feelings arise, but are quickly arranged and put away. What others see is calm; what you experience is fast internal sorting.",actions:["Say one unpolished sentence","Pause before responding once","Let something remain incomplete"]},
+  {name:"Stellar Gravitational Field",group:"The Anchor of Order",cx:90,cy:33,q:"4",subMin:86,subMax:999,subAxis:"E",tags:["Outward Structuring","High Stability","Centripetal"],narrative:"You are someone people naturally orient toward.\n\nOthers feel calmer around you. Things find direction when you're involved.\n\nYou don't always act loudly, but you hold structure together.\n\nAnd sometimes, in doing that, you forget you also need support.",eIndex:"High",lIndex:"Low",flow:"Outward structuring",mechanism:"You may have spent a long time in roles where you stabilize things for others. That role slowly becomes your default way of being.",meaning:"You become a quiet center others rely on. Stability gathers around you almost naturally.",actions:["Let someone else decide something","Accept help without explaining","Step out of responsibility briefly"]},
+  {name:"Luminous Crack",group:"Burdened Radiance",cx:59,cy:60,q:"1",subMin:36,subMax:42,subAxis:"L",tags:["Transformative Strain","Adaptive Resilience","Forward Pressure"],narrative:"You didn't stop after things became difficult — you continued forward.\n\nWhat happened didn't disappear; it became part of you.\n\nThis is why you may feel stronger than before.\nBut also why rest may feel unfamiliar.\n\nStrength doesn't always need pressure to prove itself.",eIndex:"High",lIndex:"High",flow:"Transformative Strain",mechanism:"You may turn experience into movement rather than pause with it.",meaning:"What you've been through still exists inside you, but it has been integrated rather than removed.",actions:["Do something without meaning","Avoid measuring progress today","Allow stillness without purpose"]},
+  {name:"Burning Glacier",group:"Burdened Radiance",cx:59,cy:40,q:"1",subMin:43,subMax:50,subAxis:"L",tags:["Accumulated Compression","Delayed Fatigue","High Load"],narrative:"You are holding a lot, and you are doing it well.\n\nPeople trust you because you can carry things without falling apart.\n\nBut being capable doesn't mean you are never tired.\nIt just means the tiredness arrives later.",eIndex:"High",lIndex:"High",flow:"Accumulated Compression",mechanism:"You may be carrying responsibility for a long time without pause or redistribution.",meaning:"You look stable, but something inside is slowly wearing down. Not suddenly — just continuously.",actions:["Delay one non-urgent task","Say no without explanation once","Leave one thing unattended for now"]},
+  {name:"Glass-Core Hammer",group:"Burdened Radiance",cx:66,cy:50,q:"1",subMin:51,subMax:60,subAxis:"L",tags:["Controlled Suppression","Internal Fragility","High Regulation"],narrative:"You are sensitive, but not easily seen as such.\n\nYou tend to act clearly, precisely, efficiently.\n\nBecause uncertainty doesn't feel comfortable for you.\n\nBut holding too tightly for too long can quietly exhaust you.",eIndex:"High",lIndex:"High",flow:"Controlled Suppression",mechanism:"You may respond to uncertainty by increasing control and structure.",meaning:"Externally composed, internally alert. Control helps you feel safe, but it also tightens everything inside.",actions:["Leave one small thing unadjusted","Let something happen without correction","Allow imperfection once"]},
+  {name:"Charged Cumulonimbus",group:"Burdened Radiance",cx:78,cy:82,q:"1",subMin:61,subMax:999,subAxis:"L",tags:["Pressure Build","Accumulation","Pre-Release"],narrative:"Something is building inside you.\n\nNot chaos — accumulation.\n\nThoughts, emotions, pressure gathering in the same place.\n\nYou are still functioning, still holding your shape.\nBut something feels fuller than usual.\n\nThis is not collapse. It is buildup.",eIndex:"High",lIndex:"High",flow:"Accumulation / Pressure Build",mechanism:"You may be carrying multiple emotional or mental threads without enough release space.",meaning:"Everything is still moving, but nothing is fully releasing.",actions:["Move your body without purpose","Write without organizing anything","Do something with no result"]},
+  {name:"A Poem Interpreted by the Breeze",group:"Detached Observers",cx:50,cy:33,q:"2",subMin:45,subMax:55,subAxis:"E",tags:["Flow-through","Open Perception","Low Retention"],narrative:"You feel light in a way that is hard to hold onto.\n\nYou sense many things, but they don't stay fixed in you.\n\nThey pass through, then leave.\n\nThis is a soft kind of awareness — but sometimes it can feel directionless.",eIndex:"Low",lIndex:"Low",flow:"Flow-through sensitivity",mechanism:"You may be open to input, but less inclined to hold onto it.",meaning:"Experience moves through you without settling.",actions:["Do one very concrete task","Build a small daily anchor","Keep one stable routine"]},
+  {name:"Signal Tower in the Fog",group:"Detached Observers",cx:40,cy:25,q:"2",subMin:35,subMax:44,subAxis:"E",tags:["External Attunement","High Sensitivity","Relational Alignment"],narrative:"You notice people very quickly.\n\nSmall shifts in tone or mood are easy for you to feel.\n\nSo you adjust yourself naturally to keep things smooth.\n\nBut sometimes you forget to ask: how am I feeling?",eIndex:"Medium",lIndex:"Medium",flow:"External attunement",mechanism:"You may be highly sensitive to relational environments, adjusting automatically.",meaning:"You are constantly tuned to others, less often tuned to yourself.",actions:["Pause before responding","Check your own feeling first","Make one decision only for yourself"]},
+  {name:"Translucent Amber",group:"Detached Observers",cx:30,cy:15,q:"2",subMin:26,subMax:34,subAxis:"E",tags:["Delayed Processing","Emotional Buffering","Gentle Hold"],narrative:"You don't ignore feelings — you hold them for later.\n\nYou wait until it feels safer to return to them.\n\nThis protects you from being overwhelmed.\n\nBut when things are held too long, they can become harder to name.",eIndex:"Medium-Low",lIndex:"Medium",flow:"Delayed processing",mechanism:"You may prefer emotional safety before emotional expression.",meaning:"Emotions are stored, not erased. They wait quietly beneath the surface.",actions:["Say one honest feeling out loud","Don't delay a response once","Let something be expressed immediately"]},
+  {name:"Abyssal Mothership",group:"Detached Observers",cx:15,cy:5,q:"2",subMin:0,subMax:25,subAxis:"E",tags:["Detachment","Observational","Protective Distance"],narrative:"You tend to observe before you enter.\n\nYou understand what is happening, but you don't always step fully into it.\n\nThis keeps you safe and clear.\n\nBut sometimes life asks for participation, not just observation.",eIndex:"Medium-Low",lIndex:"Low",flow:"Detachment / Observation",mechanism:"Distance may be your way of staying emotionally safe and stable.",meaning:"You are close to things, but slightly outside of them.",actions:["Say yes to something small you'd usually avoid","Don't analyze one interaction","Participate without stepping back"]},
+  {name:"Rain-Soaked Neon",group:"Fragile Resonators",cx:40,cy:40,q:"3",subMin:36,subMax:42,subAxis:"L",tags:["Amplified Perception","Unfiltered Input","Intensity"],narrative:"Everything feels slightly stronger for you.\n\nLight, sound, emotion — they all arrive directly.\n\nSometimes this feels beautiful, sometimes exhausting.\n\nYou are not too sensitive.\nThe world is just arriving without a filter.",eIndex:"Medium-Low",lIndex:"High",flow:"Amplified perception",mechanism:"You may have heightened perceptual sensitivity to emotional and sensory input.",meaning:"Experience comes in raw and unfiltered, intensifying everything.",actions:["Sit in quiet space","Reduce stimulation for a while","Let your system soften"]},
+  {name:"Dreamcatcher in the Evening Wind",group:"Fragile Resonators",cx:48,cy:50,q:"3",subMin:43,subMax:50,subAxis:"L",tags:["Absorptive Permeability","High Empathy","Boundary Diffusion"],narrative:"You absorb people easily.\n\nTheir emotions, tone, and presence stay with you longer than you expect.\n\nThis is sensitivity, not weakness.\n\nBut not everything you carry belongs to you.",eIndex:"Medium-Low",lIndex:"High",flow:"Absorptive permeability",mechanism:"You may have very open emotional boundaries, especially in connection.",meaning:"You take in emotional traces from others without always filtering them out.",actions:["Reduce social input at night","Spend time completely alone","Let your system clear itself"]},
+  {name:"Weightless Bird",group:"Fragile Resonators",cx:37,cy:63,q:"3",subMin:51,subMax:60,subAxis:"L",tags:["Floating Retention","Unanchored","Suspended"],narrative:"You look fine, but something inside hasn't fully settled.\n\nFeelings are present, but not placed anywhere.\n\nThey are still floating, waiting — for expression or connection.",eIndex:"Medium-Low",lIndex:"Medium-High",flow:"Floating retention",mechanism:"You may not yet have a safe place or person to fully release what you feel.",meaning:"Emotion exists, but has not landed yet.",actions:["Say one small honest thing","Let one reaction happen naturally","Share something simple and real"]},
+  {name:"Tides of the Moon's Far Side",group:"Fragile Resonators",cx:33,cy:82,q:"3",subMin:61,subMax:999,subAxis:"L",tags:["Formation","Undefined","Pre-Language"],narrative:"You may not fully know what you are feeling right now.\n\nBut something is changing, even if it doesn't have a name yet.\n\nThere is no need to rush clarity.\n\nNot everything inside you needs to be understood immediately.",eIndex:"Low-Medium",lIndex:"Medium",flow:"Formation / Undefined",mechanism:"You may be in transition — something internal is still organizing itself.",meaning:"A state forming, but not yet defined.",actions:["Don't define your mood today","Write fragments instead of conclusions","Do one simple action"]}
 ];
 
 /* ═══════════════ STATE ═══════════════ */
@@ -1126,71 +1134,79 @@ function computeResult(){
   ans.forEach(a=>{if(a){tE+=a.e;tL+=a.l;}});
   const E=tE, L=tL;
 
-  // New mapping: E_MID=55, L_MID=35
+  // Quadrant thresholds
   const E_MID=55, L_MID=35;
-  let match=null;
+  let q;
+  if(E>E_MID && L>L_MID)       q='1';   // High E · High L  → Burdened Radiance
+  else if(E<=E_MID && L<=L_MID) q='2';  // Low E  · Low L   → Detached Observers
+  else if(E<=E_MID && L>L_MID)  q='3';  // Low E  · High L  → Fragile Resonators
+  else                           q='4';  // High E · Low L   → Anchor of Order
 
-  if(E>E_MID && L<=L_MID){
-    // Q4: Anchor of Order — subdivide by E
-    match=PERSONALITIES.find(p=>p.q==='4'&&E>=p.subMin&&E<=p.subMax)
-         ||PERSONALITIES.find(p=>p.q==='4');
-  } else if(E>E_MID && L>L_MID){
-    // Q1: Burdened Radiance — subdivide by L
-    match=PERSONALITIES.find(p=>p.q==='1'&&L>=p.subMin&&L<=p.subMax)
-         ||PERSONALITIES.find(p=>p.q==='1');
-  } else if(E<=E_MID && L<=L_MID){
-    // Q2: Detached Observers — subdivide by E (descending)
-    match=PERSONALITIES.find(p=>p.q==='2'&&E>=p.subMin&&E<=p.subMax)
-         ||PERSONALITIES.find(p=>p.q==='2');
-  } else {
-    // Q3: Fragile Resonators — subdivide by L
-    match=PERSONALITIES.find(p=>p.q==='3'&&L>=p.subMin&&L<=p.subMax)
-         ||PERSONALITIES.find(p=>p.q==='3');
-  }
-  if(!match) match=PERSONALITIES[0];
+  // Within quadrant: pick personality with nearest center point
+  const candidates = PERSONALITIES.filter(p=>p.q===q);
+  let match = candidates[0];
+  let minDist = Infinity;
+  candidates.forEach(p=>{
+    const d = Math.hypot(E - p.cx, L - p.cy);
+    if(d < minDist){ minDist=d; match=p; }
+  });
+  if(!match) match = PERSONALITIES[0];
 
   // Set vibe image
   const vibeImg=document.getElementById('vibe-img');
-  if(vibeImg&&VIBE_IMGS[match.name]) vibeImg.src=VIBE_IMGS[match.name];
+  if(vibeImg && VIBE_IMGS[match.name]) vibeImg.src=VIBE_IMGS[match.name];
 
   // Result screen
   document.getElementById('r-vibe').textContent=match.name;
   document.getElementById('r-tag').textContent=match.group;
   document.getElementById('r-escore').textContent='E : '+E;
   document.getElementById('r-lscore').textContent='L : '+L;
-  document.getElementById('r-desc').textContent=match.narrative.split('\n')[0];
+  document.getElementById('r-desc').textContent=match.narrative.replace(/\n/g,' ').split('  ')[0];
 
   // Report screen
   document.getElementById('rep-name').textContent=match.name;
   document.getElementById('rep-group').textContent=match.group;
   document.getElementById('rep-tags').innerHTML=match.tags.map(t=>`<span class="tag">${t}</span>`).join('');
 
+  // Score bars — E and L both 0-100
   document.getElementById('av-e').textContent=E;
-  document.getElementById('af-e').style.width=Math.min(100,Math.round((E/100)*100))+'%';
+  document.getElementById('af-e').style.width=Math.min(100,E)+'%';
   document.getElementById('av-l').textContent=L;
-  document.getElementById('af-l').style.width=Math.min(100,Math.round((L/75)*100))+'%';
+  document.getElementById('af-l').style.width=Math.min(100,L)+'%';
 
-  // Quadrant dot positioning
-  // E axis: 0→100 maps to x 10→270. L axis: 0→75 maps to y 210→10 (inverted: high L = top)
-  const qx=Math.round(10+(Math.min(E,100)/100)*260);
-  const qy=Math.round(210-Math.min((L/75)*200,200));
+  // Quadrant dot: E(0-100)→x(10-270), L(0-100)→y(210-10) (L inverted: high=top)
+  const svgW=260, svgH=200, pad=10;
+  const dotX = Math.round(pad + (Math.min(E,100)/100)*svgW);
+  const dotY = Math.round(pad + svgH - (Math.min(L,100)/100)*svgH);
   ['qdot','qdot2','qdot3'].forEach(id=>{
     const el=document.getElementById(id);
-    if(el){el.setAttribute('cx',qx);el.setAttribute('cy',qy);}
+    if(el){el.setAttribute('cx',dotX);el.setAttribute('cy',dotY);}
   });
 
-  const gm={"The Anchor of Order":"qlbl-ao","Burdened Radiance":"qlbl-br","Detached Observers":"qlbl-do","Fragile Resonators":"qlbl-fr"};
+  // Highlight quadrant label
+  const gm={
+    "The Anchor of Order":"qlbl-ao",
+    "Burdened Radiance":"qlbl-br",
+    "Detached Observers":"qlbl-do",
+    "Fragile Resonators":"qlbl-fr"
+  };
   Object.entries(gm).forEach(([g,id])=>{
     const el=document.getElementById(id);
     if(el){
-      el.setAttribute('fill',g===match.group?'rgba(200,255,0,.8)':'rgba(255,255,255,.18)');
+      el.setAttribute('fill',g===match.group?'rgba(200,255,0,.85)':'rgba(255,255,255,.18)');
       el.setAttribute('font-weight',g===match.group?'bold':'normal');
     }
   });
 
+  // Narrative
   const narDiv=document.getElementById('rep-narrative');
-  if(narDiv) narDiv.innerHTML=match.narrative.replace(/\\n/g,'<br>').split('<br><br>').map(p=>`<p>${p}</p>`).join('');
+  if(narDiv) narDiv.innerHTML=match.narrative
+    .replace(/\\n/g,'\n')
+    .split('\n\n')
+    .map(p=>`<p>${p.replace(/\n/g,'<br>')}</p>`)
+    .join('');
 
+  // System reading
   const sysDiv=document.getElementById('rep-system');
   if(sysDiv){
     const rows=[['Energy Index',match.eIndex],['Load Index',match.lIndex],['Emotional Flow',match.flow]];
@@ -1200,11 +1216,12 @@ function computeResult(){
   if(meaningEl) meaningEl.textContent=match.meaning;
   const whyEl=document.getElementById('rep-why');
   if(whyEl) whyEl.textContent=match.mechanism;
-  document.getElementById('rep-actions').innerHTML=match.actions.map(a=>`<div class="action-item"><div class="action-dot"></div>${a}</div>`).join('');
+
+  document.getElementById('rep-actions').innerHTML=match.actions
+    .map(a=>`<div class="action-item"><div class="action-dot"></div>${a}</div>`).join('');
 
   goScreen('sr');
 }
-
 function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),2200);}
 document.addEventListener('DOMContentLoaded',renderQ);
 </script>
